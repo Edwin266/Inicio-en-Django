@@ -1,21 +1,14 @@
-<html>
-    <head>
-        <title>Primera página web</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Página web de Edwin</a></h1>
-        </div>
-        {% for post in posts %}
-        <div>
-        <p> publicado: {{ post.created_at }}</p>
-        <h1><a href = "/">{{ post.name }}</a></h1>
-        <p ><img src="{{post.url|linebreaksbr }}" height="500" width="500" ></p>
-        </div>
-        {% endfor %}
+{% extends 'photos/base.html' %}
 
-        <div>
-            <h2><a href="">Te Amo Dino</a></h2>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                <p> publicado: {{ post.created_at }}</p>
+            </div>
+            <h1><a href = "/">{{ post.name }}</a></h1>
+            <h3>Descripcion:</h3><p>{{ post.description }}</p>
+            <p ><img src="{{post.url|linebreaksbr }}" height="500" width="500" ></p>
         </div>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
